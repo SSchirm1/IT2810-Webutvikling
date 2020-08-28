@@ -1,0 +1,91 @@
+body {
+  padding-top: 100px;
+  font-family: garamond;
+  background-color: #ccf;
+}
+p {
+  font-size: 17;
+  padding: 15px;
+}
+canvas {
+  background-color: red;
+}
+.line {
+  stroke:rgb(255,255,255);
+  stroke-width:10;
+}
+
+h3 {
+  text-decoration: underline;
+  font-size: 22px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-gap: 1em;
+
+  width: 80%;
+  margin: auto;
+  padding: 50px;
+  border-radius: 30px;
+  margin-bottom: 100px;
+  background-color: white;
+}
+
+.wrapper > div {
+  padding: 20px;
+  text-align: center;
+}
+.intro {
+  background: #C1FFD7
+}
+.SVG-bilde {
+  background: #C1FDFF;
+}
+.canvas-bilde {
+  background: #F3C1FF;
+}
+h1 {
+  text-align: center;
+}
+button {
+  font-size: 20px;
+  background-color: #39f;
+  padding: 20px;
+  margin: 20px;
+  border: 3px solid white;
+  border-radius: 20px;
+  color: white;
+}
+.dokumentasjon {
+  margin: auto;
+  width: 80%;
+  text-align: center;
+}
+#dokumentasjon {
+  padding: 50px;
+  background: white;
+  border-radius: 20px;
+  display: none;
+}
+
+#svg, #canvas {
+  cursor: pointer;
+}
+
+#blå,#grønn {
+  transition: 0.7s;
+}
+
+#sirkel {
+  /* transform: translate3d(150px, 150px, 0); */
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 1150px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    width: 90%;
+  }
+}
