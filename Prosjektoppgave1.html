@@ -1,86 +1,9 @@
 <html>
   <head>
     <META http-equiv=Content-Type content="text/html; charset=utf-8">
-    <style>
-      body {
-        padding-top: 100px;
-        font-family: garamond;
-        background-color: #ccf;
-      }
-      p {
-        font-size: 17;
-        padding: 15px;
-      }
-      canvas {
-        background-color: red;
-      }
-      .line {
-        stroke:rgb(255,255,255);
-        stroke-width:10;
-      }
-
-      h3 {
-        text-decoration: underline;
-        font-size: 22px;
-      }
-      .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 2fr 2fr;
-        grid-gap: 1em;
-
-        width: 80%;
-        margin: auto;
-        padding: 50px;
-        border-radius: 30px;
-        margin-bottom: 100px;
-        background-color: white;
-      }
-
-      .wrapper > div {
-        padding: 20px;
-        text-align: center;
-      }
-      .intro {
-        background: #C1FFD7
-      }
-      .SVG-bilde {
-        background: #C1FDFF;
-      }
-      .canvas-bilde {
-        background: #F3C1FF;
-      }
-      h1 {
-        text-align: center;
-      }
-      button {
-        font-size: 20px;
-        background-color: #39f;
-        padding: 20px;
-        margin: 20px;
-        border: 3px solid white;
-        border-radius: 20px;
-        color: white;
-      }
-      .dokumentasjon {
-        margin: auto;
-        width: 80%;
-        text-align: center;
-      }
-      #dokumentasjon {
-        padding: 50px;
-        background: white;
-        border-radius: 20px;
-      }
-
-      @media screen and (max-width: 1150px) {
-        .wrapper {
-          grid-template-columns: 1fr;
-          padding: 20px;
-          width: 90%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   </head>
   <body>
       <h1> Øving 1 - IT2810</h1>
@@ -88,134 +11,63 @@
       <div class="intro">
         <h3> Om kunstneren: </h3>
         <div id="textbox">
-          <p>Kunstneren kommer fra Trondheim og studerer Informatikk. Han har lite erfaring med SVG, så ikke ha alt for høye forventninger.
-          Hvis du trykker på bildet kan du gjøre rødfargen om til lilla. Prøv det!</p>
+          <p>Kunstneren kommer fra Trondheim og studerer Informatikk. Han har lite erfaring med SVG og HTML Canvas, så ikke ha alt for høye forventninger.<br><br>
+         </p>
         </div>
       </div>
 
       <div class="SVG-bilde">
-        <h3>SVG: "RBGG"</h3>
+        <h3>SVG: "RGGB"</h3>
         <svg id="svg" width="300" height="300" style="background-color: red">
-          <path d="M150 0 H 300  V 145" fill="green"/>
-          <path d="M150 0 H 0 V 145" fill="blue"/>
+          <path d="M150 0 H 300  V 145" fill="green" id="grønn"/>
+          <path d="M150 0 H 0 V 145" fill="blue" id="blå"/>
           <polygon points="150,220 150,280 280,280" style="fill: lime"/>
           <polygon points="150,220 150,280 20,280" style="fill: yellow"/>
-          <circle id="sirkel" cx="150" cy="150" r="50" stroke="white" stroke-width="10" fill="blue"/>
-          <line class="line" x1="0" y1="150" x2="300" y2="150" style=""/>
+          <circle id="sirkel" cx="150" cy="150" r="50" stroke="white" stroke-width="10" fill="blue" />
+          <line id="line" class="line" x1="0" y1="150" x2="300" y2="150" />
         </svg>
+        <p>På dette bildet kan du forsøke å se hva som skjer hvis du holder musen over en av de øverste trekantene. Se også hva som skjer hvis du trykker på sirkelen flere ganger! </p>
       </div>
 
       <div class="canvas-bilde">
-        <h3>Canvas: "RBGG2"</h3>
+        <h3>Canvas: "RGBB2"</h3>
         <canvas id="canvas" width="300" height="300">
           </canvas>
+          <p>Se hva som skjer dersom du trykker på sirkelen på dette bildet!</p>
       </div>
+
     </div>
 
     <div class="dokumentasjon">
-      <button id="show"> Vis dokumentasjon </button>
+      <button id="show" type="button"> Vis dokumentasjon </button>
       <button id="hide"> Skjul dokumentasjon </button>
       <div id=dokumentasjon>
         <h1>Dokumentasjon</h1>
         <h3>Grid</h5>
         <p>Grid ble brukt i forbindelse med de tre fargedekte boksene ovenfor, som viser informasjon om kunstneren, SVG-bildet og Canvas-bildet. Jeg lagde en wrapper-div som inneholder ett div-element for hver av disse tre boksene. Deretter brukte jeg grid-template-columns og grid-gap i CSS for å bestemme bredden og mellomrommet mellom boksene. Ved bruk av media-queries endret jeg kolonneformatet på griden når skjermen ble mindre for å gjøre siden mer responsiv. Grunnen til at jeg brukte grid var at jeg kunne kontrollere layouten både på kolonnene og radene dersom jeg hadde behov for flere rader. Med flexbox er det enkelt å kontrollere layouten på enten radene eller kolonnene, men det blir mindre hensiktsmessig enn grid når man ønsker å kontrollere både rader og kolonner. </p>.
         <h3>HTML Canvas og SVG</h3>
-        <p> SVG-bildet ble lagd ved hjelp av formingsfunksjonene polygon, path, circle og line. Deretter ble formene konstruert ved å utfylle informasjon i HTML om koordinatene, farger, stroke-width, etc. Når SVG-bildet trykkes på kalles en jquery-funksjon som endrer bakgrunnsfargen.<br><br>
+        <p> SVG-bildet ble lagd ved hjelp av formingsfunksjonene polygon, path, circle og line. Deretter ble formene konstruert ved å utfylle informasjon i HTML om koordinatene, farger, stroke-width, etc. Formene ble tildelt ID-er og klasser slik at jeg kunne manipulere de og skape interaktive figurer senere med JavaScript. <br><br>
 
-        Canvas-bildet ble konstruert ved å først opprette et canvas-element i HTML, og deretter opprette en variabel i javascript for å referere til dette elementet. Deretter brukte jeg .getContext på variabelen og benyttet meg av funksjoner som .beginPath, .fill, .moveTo og .arc for å konsturere formene.  </p>
+        Canvas-bildet ble konstruert ved å først opprette et canvas-element i HTML, og deretter opprette en variabel i javascript for å referere til dette elementet. Deretter brukte jeg .getContext på variabelen og benyttet meg av funksjoner som .beginPath, .fill, .moveTo og .arc for å konsturere formene. Måten animasjonen fungerer på er at jeg lagde en funksjon jeg kalte "animate" med javascript som hele tiden fjerner elementer fra canvasen og tegner nye elementer, slik at det ser ut som om sirkelen beveger seg kontinuerlig. </p>
         <h3>jQuery</h3>
-        <p>Jquery-biblioteket ble brukt for å implementere funksjonalitetene for å vise eller skjule dokumentasjonen når man trykker på de blå knappene under bildene. Knappeelementene og dokumentasjonsteksten ble referert til ved bruk av ID-er, og jeg brukte .click for å kalle funksjonene for skjuling og vising av dokumentasjonen ved knappetrykk. For å skjule/vise dokumentasjonen brukte jeg .hide() og .show()-funksjonene fra jquery-biblioteket. Jquery-funksjonen .css ble også brukt for å endre bakgrunnsfargen på begge bildene til lilla når man trykker på de</p>
+        <p>Jquery-biblioteket ble brukt for å implementere funksjonalitetene for å vise eller skjule dokumentasjonen når man trykker på de blå knappene under bildene. Knappeelementene og dokumentasjonsteksten ble referert til ved bruk av ID-er, og jeg brukte .click for å kalle funksjonene for skjuling og vising av dokumentasjonen ved knappetrykk. For å skjule/vise dokumentasjonen brukte jeg .hide() og .show()-funksjonene fra jquery-biblioteket. Jquery ble også brukt i funksjonen som detekterer om canvasen og sirkelen har blitt klikket på. Det ble også brukt jquery for å endre farger når man hovrer over de grønne og blå firkantene, og da ble .hover- og .mouseleave-funksjonene fra jquery-biblioteket brukt.  </p>
         <h3>Cross browser testing</h3>
-        <p>Siden ble testet i nettleserne Google Chrome, Mozilla Firefox, Opera og Internet Explorer. Det ble undersøkt om knappene for å skjule og vise dokumentasjonen fungerte og om fargeendringene ved trykk på SVG- og Canvasbildene ble registrert. Det ble også sjekket at siden var responsiv i alle nettleserne ved at jeg endret størrelsen på vinduet i de ulike nettleserne. Det ble også sjekket om utseendet (farger, skrifttyper etc.) varierte mellom sidene. Den eneste åpenbare forskjellen jeg la merke til var at noen av nettleserne (Explorer og Opera) ikke støttet bokstavene æ, ø og å, og jeg ble derfor nødt til å inkludere en META-tag i HTML-headen slik at disse bokstavene ble synlige i alle nettleserne. Ellers fungerte alt som det skulle.
+        <p>Siden ble testet i nettleserne Google Chrome, Mozilla Firefox, Opera og Internet Explorer. Det ble undersøkt om knappene for å skjule og vise dokumentasjonen fungerte og om animasjonene på SVG- og Canvas-bildene fungerte. Det ble også sjekket at siden var responsiv i alle nettleserne ved at jeg endret størrelsen på vinduet i de ulike nettleserne. Det ble også sjekket om utseendet (farger, skrifttyper etc.) varierte mellom sidene. Den eneste åpenbare forskjellen jeg la merke til var at noen av nettleserne (Explorer og Opera) ikke støttet bokstavene æ, ø og å, og jeg ble derfor nødt til å inkludere en META-tag i HTML-headen slik at disse bokstavene ble synlige i alle nettleserne. Ellers fungerte alt som det skulle.
         </p>
         <h3>Kilder</h3>
         <a href="https://www.w3schools.com/graphics/svg_intro.asp">SVG-tutorial på W3schools: </a> <br>
         <a href="https://api.jquery.com">Jquery-biblioteket</a><br>
         <a href="https://www.w3schools.com/html/html5_canvas.asp">HTML Canvas (W3schools)</a><br>
         <a href="https://www.youtube.com/watch?v=jV8B24rSN5o">CSS grid-tutorial</a><br>
-        <a href="https://www.w3schools.com/jquery/jquery_hide_show.asp">Gjenbrukt jquery-kode for å skjule/vise dokumentasjon</a>
+        <a href="https://www.w3schools.com/jquery/jquery_hide_show.asp">Gjenbrukt jquery-kode for å skjule/vise dokumentasjon</a><br>
+        <a href="https://www.youtube.com/watch?v=yq2au9EfeRQ&t=347s">Youtube-video om canvas-animasjon</a>
       <div>
 
     </div>
 
 
+    <script src="script.js"></script>
 
-
-    <script>
-        var c = document.getElementById("canvas");
-        var ctx = c.getContext("2d");
-
-        // sirkel
-        ctx.beginPath();
-        ctx.arc(150, 150, 50, 0, 2 * Math.PI);
-        ctx.fillStyle = "blue";
-        ctx.fill();
-        ctx.lineWidth = 10;
-        ctx.strokeStyle = "white";
-        ctx.stroke();
-
-        // linje
-        ctx.beginPath();
-        ctx.moveTo(0,150);
-        ctx.lineTo(300,150);
-        ctx.stroke();
-
-        // blå trekant
-        ctx.beginPath();
-        ctx.moveTo(0,0);
-        ctx.lineTo(150,0);
-        ctx.lineTo(0,145);
-        ctx.fillStyle = "blue";
-        ctx.fill();
-
-        // grønn trekant
-        ctx.beginPath();
-        ctx.moveTo(150,0);
-        ctx.lineTo(300,0);
-        ctx.lineTo(300,145);
-        ctx.fillStyle = "green";
-        ctx.fill();
-
-        // gul trekant
-        ctx.beginPath();
-        ctx.moveTo(150,220);
-        ctx.lineTo(150,280);
-        ctx.lineTo(20,280);
-        ctx.fillStyle = "yellow";
-        ctx.fill();
-
-        // lysegrønn trekant
-        ctx.beginPath();
-        ctx.moveTo(150,220);
-        ctx.lineTo(150,280);
-        ctx.lineTo(280,280);
-        ctx.fillStyle = "lime";
-        ctx.fill();
-
-        // var elem = document.getElementById("canvas");
-        // elem.onclick = function() {elem.style.background = 'purple';}
-
-        // function changeSVGcolor() {
-        //   document.getElementById("svg").style.background = "purple";
-        // }
-
-        // jquery
-        $(document).ready(function(){
-          $("#hide").click(function(){
-            $("#dokumentasjon").hide();
-          });
-          $("#show").click(function(){
-            $("#dokumentasjon").show();
-            });
-          $("#canvas").click(function() {
-            $(this).css('background', 'purple')
-          })
-          $("#svg").click(function() {
-            $(this).css('background', 'purple')
-          })
-        });
-
-    </script>
 
   </body>
 </html>
